@@ -13,7 +13,7 @@ public class Foo {
         this.bar = bar;
         this.bazs = new ArrayList<>();
         this.qux = new Qux();
-        this.corge = new Corge();
+        this.corge = new Corge(this);
         this.graults = new ArrayList<>();
     }
 
