@@ -1,7 +1,8 @@
 package com.jad;
 
 public class Corge {
-    public Corge() {
-
+    private Foo foo;
+    public Corge(Foo foo) {
+        this.foo = foo;
     }
 }
