@@ -13,7 +13,7 @@ public class Foo {
         this.bar = bar;
         this.bazs = new ArrayList<>();
         this.qux = new Qux();
-        this.corge = new Corge(this);
+        this.corge = null;
         this.graults = new ArrayList<>();
     }
 
@@ -21,8 +21,8 @@ public class Foo {
         this.bazs.add(baz);
     }
 
-    public void addGrault(Grault grault) {
-        this.graults.add(grault);
+    public void addGrault() {
+        this.graults.add(new Grault(this));
     }
 
     public Bar getBar() {
@@ -46,6 +46,16 @@ public class Foo {
     }
 
     public void setCorge(Corge corge) {
+        if (this.corge == corge) {
+            return;
+        }
+        Corge oldCorge = this.corge;
         this.corge = corge;
+        if (oldCorge != null && corge != null) {
+            oldCorge.setFoo(null);
+        }
+        if (corge != null && corge.getFoo() != this) {
+            corge.setFoo(this);
+        }
     }
 }
